@@ -7,16 +7,67 @@ export default function Product() {
     const product=products.find(p=>p.id==id);
     if(!product) return <p>Product not found</p>
     return (
-    <div style={{padding: '20px', maxWidth: '600px'}}>
-        <img src={product.img} width="300" style={{marginBottom: '20px'}}/>
-        <h2>{product.name}</h2>
-        <p style={{fontSize: '18px', margin: '10px 0'}}><strong>Price: ₹{product.price}</strong></p>
-        <p style={{margin: '15px 0', lineHeight: '1.5'}}><strong>Description:</strong> {product.description}</p>
-        <p><strong>Category:</strong> {product.category}</p>
-        <p><strong>Stock:</strong> {product.stock} available</p>
-        <Link to={`/buynow/${product.id}`}>
-        <button style={{padding: '10px 20px', backgroundColor: '#007bff', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer', marginTop: '20px'}}>Buy Now</button>
-        </Link>
-    </div>
-  )
+    <div className="container" style={{padding: '2rem 1rem'}}>
+        <div className="card" style={{maxWidth: '800px', margin: '0 auto', overflow: 'hidden'}}>
+            <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', alignItems: 'start'}}>
+                <div style={{position: 'relative'}}>
+                    <img 
+                        src={product.img} 
+                        alt={product.name}
+                        style={{
+                            width: '100%',
+                            height: '400px',
+                            objectFit: 'cover',
+                            borderRadius: 'var(--border-radius)'
+                        }}
+                    />
+                    <div style={{
+                        position: 'absolute',
+                        top: '1rem',
+                        right: '1rem',
+                        backgroundColor: 'var(--success-color)',
+                        color: 'white',
+                        padding: '0.5rem 1rem',
+                        borderRadius: 'var(--border-radius)',
+                        fontWeight: '500'
+                    }}>
+                        {product.stock} in stock
+                    </div>
+                </div>
+                <div style={{padding: '2rem'}}>
+                    <div style={{marginBottom: '1rem'}}>
+                        <span style={{
+                            backgroundColor: 'var(--gray-100)',
+                            color: 'var(--gray-600)',
+                            padding: '0.5rem 1rem',
+                            borderRadius: 'var(--border-radius)',
+                            fontSize: '0.875rem',
+                            fontWeight: '500'
+                        }}>
+                            {product.category}
+                        </span>
+                    </div>
+                    <h1 style={{fontSize: '2rem', fontWeight: '700', color: 'var(--gray-900)', marginBottom: '1rem'}}>{product.name}</h1>
+                    <p style={{fontSize: '2rem', fontWeight: '700', color: 'var(--primary-color)', marginBottom: '1.5rem'}}>₹{product.price}</p>
+                    <p style={{color: 'var(--gray-600)', fontSize: '1rem', lineHeight: '1.6', marginBottom: '2rem'}}>{product.description}</p>
+                    
+                    <div style={{display: 'flex', gap: '1rem', marginBottom: '2rem'}}>
+                        <div style={{flex: 1, textAlign: 'center', padding: '1rem', backgroundColor: 'var(--gray-100)', borderRadius: 'var(--border-radius)'}}>
+                            <div style={{fontSize: '1.5rem', fontWeight: '700', color: 'var(--gray-900)'}}>{product.stock}</div>
+                            <div style={{fontSize: '0.875rem', color: 'var(--gray-600)'}}>Available</div>
+                        </div>
+                        <div style={{flex: 1, textAlign: 'center', padding: '1rem', backgroundColor: 'var(--gray-100)', borderRadius: 'var(--border-radius)'}}>
+                            <div style={{fontSize: '1.5rem', fontWeight: '700', color: 'var(--gray-900)'}}>⭐ 4.8</div>
+                            <div style={{fontSize: '0.875rem', color: 'var(--gray-600)'}}>Rating</div>
+                        </div>
+                    </div>
+                    
+                    <Link to={`/buynow/${product.id}`} className="btn btn-primary" style={{width: '100%', padding: '1rem', fontSize: '1.1rem', fontWeight: '600'}}>
+                        🛒 Buy Now
+                    </Link>
+                </div>
+            </div>
+        </div>
+    </div>
+  )
 }
