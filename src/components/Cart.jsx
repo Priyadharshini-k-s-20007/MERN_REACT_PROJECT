@@ -2,7 +2,12 @@ import React from 'react'
 
 export default function Cart({cart,setCart}) {
     const removeItem=(id)=>{
-        setCart(cart.filter(item=>item._id !==id));
+        const index = cart.findIndex(item=>item.id === id);
+        if(index > -1) {
+            const newCart = [...cart];
+            newCart.splice(index, 1);
+            setCart(newCart);
+        }
     };
   return (
     <div>
@@ -12,7 +17,7 @@ export default function Cart({cart,setCart}) {
             <div key={item.id} style={{marginBottom:20}}>
                 <h3>{item.name}</h3>
                 <p>${item.price}</p>
-                <button onClick={()=>removeItem(item._id)}>Remove</button>
+                <button onClick={()=>removeItem(item.id)}>Remove</button>
                 </div>
         ))}
     </div>

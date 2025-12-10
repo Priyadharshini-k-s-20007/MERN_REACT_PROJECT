@@ -5,7 +5,7 @@ import { products } from '../utils/api';
 
 export default function BuyNow() {
     const {id} =useParams();
-    const product=products.find(p=>p._id===id);
+    const product=products.find(p=>p.id==id);
     if(!product) return<p>Product Not Found</p>
   return (
     <div>
