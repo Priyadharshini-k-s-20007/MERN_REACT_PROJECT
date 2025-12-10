@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Products from "./components/Products"
 import { Routes, Route } from "react-router-dom";
 import Product from "./components/Product";
-import Cart from "./components/cart";
+import Cart from "./components/Cart";
 import BuyNow from "./components/BuyNow";
 import Login from "./components/Login";
 import ProtectedRoute from "./Pages/ProtectedRoute";
